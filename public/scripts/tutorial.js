@@ -16,16 +16,18 @@ var CommentBox = React.createClass({
 // tutorial5.js
 var CommentList = React.createClass({
     render: function() {
-        var commentNodes = this.props.data.map(function(comment) {
+        var commentNodes = this.props.data.comments.map(function(comment) {
             return (
                 <Comment author={comment.author} key={comment.id}>
                     {comment.text}
                 </Comment>
             );
         });
+        var commentViniNodes = this.props.data.superVini;
         return (
             <div className="commentList">
                 {commentNodes}
+                {commentViniNodes}
             </div>
         );
     }
@@ -58,10 +60,13 @@ var Comment = React.createClass({
 });
 
 // tutorial8.js
-var data = [
-    {id: 1, author: "Pete Hunt", text: "This is one comment"},
-    {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
-];
+var data ={
+        superVini: 'Oloko!',
+        comments: [
+            {id: 1, author: "Pete Hunt", text: "This is one comment"},
+            {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
+            ]
+        };
 
 ReactDOM.render(
   <CommentBox data={data} />,
